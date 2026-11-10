@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Breach Checker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">🔐 Password<span>Check</span></a>
+    <nav><a href="#checker">Check Password</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">PERSONAL SECURITY • PRIVACY FIRST</div>
+      <h1>Was your password<br><span>exposed in a breach?</span></h1>
+      <p>Check a password against billions of records from known data breaches—without sending your password itself.</p>
+      <form id="check-form" class="checker" autocomplete="off">
+        <div class="input-wrap"><input id="password" type="password" placeholder="Enter a password to check" maxlength="256" required aria-label="Password">
+          <button id="toggle" type="button" class="show-btn">Show</button></div>
+        <button id="submit" class="check-btn" type="submit">Check password <span>→</span></button>
+      </form>
+      <p class="privacy">🛡️ Your password is never stored. Only a partial SHA-1 hash is queried.</p>
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+    <section class="features">
+      <article><div class="icon">🔒</div><h3>Privacy-first</h3><p>Your complete password never leaves this app. The HIBP API uses k-anonymity.</p></article>
+      <article><div class="icon">⚡</div><h3>Fast lookup</h3><p>Check against the Pwned Passwords dataset in seconds.</p></article>
+      <article><div class="icon">🧭</div><h3>Clear guidance</h3><p>Understand the result and take practical steps to secure your accounts.</p></article>
+    </section>
+    <section id="how" class="info"><h2>How does it work?</h2><p>Your browser sends the password securely to this demo backend. The backend computes its SHA-1 hash, sends only the first five characters to Have I Been Pwned, and compares the returned hash suffix locally. MongoDB stores only an anonymous check count—not your password or its hash.</p></section>
+    <section id="faq" class="info"><h2>Frequently asked questions</h2>
+      <details><summary>Does this save my password?</summary><p>No. Passwords and hashes are not saved in MongoDB or application logs.</p></details>
+      <details><summary>What does an exposed result mean?</summary><p>The password appeared in known breach datasets. Stop using it and replace it anywhere it was reused.</p></details>
+      <details><summary>Does “not found” mean completely safe?</summary><p>No. It only means no match was found in the dataset checked.</p></details>
+    </section>
+  </main>
+  <footer>Educational project • Powered by the HIBP Pwned Passwords API • <a href="https://haveibeenpwned.com/Passwords" target="_blank" rel="noreferrer">API information</a></footer>
+  <script src="js/script.js"></script>
+</body></html>
